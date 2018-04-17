@@ -1,0 +1,35 @@
+.chat-list-container {
+  height: 100%;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.person {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  -webkit-transition: .25s;
+  transition: .25s;
+}
+
+.person:hover {
+  background-color: #e0e0e0;
+}
+
+.person i{
+  width: 2rem;
+  font-size: 1.6rem;
+  display: inline-block;
+  text-align: center;
+  margin-right: 1rem;
+}
+
+span.badge.new {
+  margin-left: auto;
+}

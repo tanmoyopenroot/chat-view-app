@@ -1,0 +1,100 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="views/thread-view/thread-view.html">
+<link rel="import" href="views/chat-view/chat-view.html">
+
+<dom-module id="chat-app">
+  <template>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    
+    <div class="row">
+      <template is="dom-if" if="{{chats}}">
+        <div class="col s3">
+          <thread-view chats="[[chats]]" id="{{id}}"></thread-view>
+        </div>
+      </template>
+      <template is="dom-if" if="{{chats}}">
+        <div class="col s9">
+          <chat-view chats="{{chats}}" id="{{id}}"></chat-view>
+        </div>
+      </template>
+    </div>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'chat-app',
+
+        properties: {
+          chats: {
+            type: Array,
+            value: [],
+            notify: true
+          },
+          id: {
+            type: Number,
+            value: 0,
+            notify: true
+          }
+        },
+
+        ready: function() {
+          this.chats = [
+            {
+              "id": 0,
+              "name": "Person A",
+              "new": 0,
+              "chat": [
+                {
+                  "me": "Text From Me"
+                },
+                {
+                  "this": "Text From A"
+                },  
+                {
+                  "me": "Text From Me"
+                },
+                {
+                  "this": "Text From A"
+                },
+                {
+                  "me": "Text From Me"
+                },
+              ]
+            },
+            {
+            "id": 1,
+            "name": "Person B",
+            "new": 2,
+            "chat": [
+                {
+                  "this": "Text From B"
+                },  
+                {
+                  "this": "Text From B"
+                },  
+                {
+                  "this": "Text From B"
+                },  
+                {
+                  "me": "Text From Me"
+                },
+                {
+                  "me": "Text From Me"
+                },
+                {
+                  "this": "Text From B"
+                },
+                {
+                  "this": "Text From B"
+                }
+              ]
+            }
+          ];
+        }
+      });
+    })();
+  </script>
+</dom-module>

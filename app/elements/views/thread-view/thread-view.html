@@ -1,0 +1,41 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="thread-view">
+  <template>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles/thread-view.css">
+    
+    <div class="chat-list-container">
+      <template is="dom-repeat" items="[[chats]]">
+        <div class="person" on-click="_updateId">
+          <i class="material-icons">account_circle</i>
+            [[ item.name ]]
+        </div>
+      </template>
+    </div>       
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'thread-view',
+
+        properties: {
+          chats: {
+            type: Array
+          },
+          id: {
+            type: Number,
+            notify: true
+          },
+        },
+        
+        _updateId: function(e) {
+          this.id = e.model.item.id;
+        },
+
+      });
+    })();
+  </script>
+</dom-module>

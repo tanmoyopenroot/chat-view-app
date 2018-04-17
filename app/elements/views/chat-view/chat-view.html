@@ -1,0 +1,118 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="chat-view">
+  <template>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="../../../styles/chat-view.css">
+    
+    <div class="chat-view-container">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo"><i class="material-icons">account_circle</i>{{name}}</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#"><i class="material-icons">more_vert</i></a></li>
+          </ul>
+        </div>
+      </nav>
+      <div id="scroll-chat" class="chat">
+        <div class="chat-view">
+          <template is="dom-repeat" items="{{chatList}}">
+            <template is="dom-if" if="{{item.this}}">
+              <div class="text-container">
+                <div class="text">
+                  <div class="text-person">
+                    {{name}}
+                  </div>
+                    {{item.this}}
+                </div>
+              </div>
+            </template>
+            <template is="dom-if" if="{{item.me}}">
+              <div class="text-container">
+                <div class="text text-right">
+                  <div class="text-person">
+                    Me
+                  </div>
+                    {{item.me}}
+                </div>
+              </div>
+            </template>
+          </template>
+        </div>
+      </div>
+      <div class="text-send">
+        <div class="row">
+          <div class="col s12">
+            <input type="text" placeholder="Type a message" value="{{currentText::input}}" on-keydown="_checkForEnter">
+            <button on-click="_addText" class="btn waves-effect waves-light">Send
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'chat-view',
+
+        properties: {
+          chats: {
+            type: Array,
+            notify: true
+          },
+          chatList: {
+            type: Array,
+            notify: true
+          },
+          id: {
+            type: Number,
+            observer: '_idChanged'
+          },
+          name: {
+            type: String
+          },
+          currentText: {
+            type: String,
+            value: ""
+          }
+        },
+
+        _idChanged: function() {
+          this.id = this.id;
+          this.name = this.chats[this.id].name
+          this.chatList = this.chats[this.id].chat;
+          this._scrollBottom();
+        },
+
+        _checkForEnter: function (e) {
+          if (e.keyCode === 13) {
+            this._addText();
+          }
+        },
+
+        _scrollBottom: function() {
+          setTimeout(() => {
+            let scrollDiv = this.$$('#scroll-chat')
+            this.$$('#scroll-chat').scrollTop = scrollDiv.scrollHeight;
+          });
+        },
+
+        _addText: function() {
+          this.push('chatList', { "me": this.currentText });
+          this.currentText = "";
+          this._scrollBottom();
+        },
+
+        ready: function() {
+          this._scrollBottom();
+        }
+
+      });
+    })();
+  </script>
+</dom-module>

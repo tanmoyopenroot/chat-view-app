@@ -1,0 +1,22 @@
+# Node dependencies
+/node_modules
+
+# Bower dependencies
+/app/bower_components
+
+# Temporary
+/.tmp
+
+# production
+/dist
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

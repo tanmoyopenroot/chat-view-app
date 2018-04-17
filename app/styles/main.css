@@ -1,0 +1,20 @@
+html, 
+body, 
+#app, 
+.row,
+.row .col {
+  height: 99.9%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Noto', sans-serif;
+}
+
+.row .col {
+  padding: 0px !important;
+}
+
+.row {
+  margin-bottom: 0px !important;
+}

@@ -1,0 +1,64 @@
+.chat-view-container {
+  height: 100%;
+  background-color: #eee;
+  position: relative;
+}
+
+.chat-view-container nav {
+  background-color: #26a69a;
+}
+
+.chat-view-container .brand-logo{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.chat-view-container i{
+  margin-left: 15px;
+}
+
+.chat {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 83%;
+}
+
+.chat .text {
+  background-color: #fff;
+  padding: 6px 7px 8px 9px;
+  min-width: 110px;
+  max-width: 60%;
+  border-radius: 5px;
+  margin: 10px;
+  display: table;
+}
+
+.chat .text-person {
+  font-weight: bold;
+  color: #26a69a;
+}
+
+.text-send {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+.text-send .row {
+  margin-bottom: 0px !important;
+}
+
+.text-send input[type=text] {
+  width: 84%;
+}
+
+.text-send button {
+  margin-top: 10px;
+  margin-left: 14px;
+}
+
+.chat .text-right {
+  margin-left: auto;
+  margin-right: 12px;
+}
